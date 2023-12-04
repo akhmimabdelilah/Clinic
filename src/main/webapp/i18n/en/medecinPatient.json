@@ -1,0 +1,27 @@
+{
+  "cliniqueApp": {
+    "medecinPatient": {
+      "home": {
+        "title": "Medecin Patients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Medecin Patient",
+        "createOrEditLabel": "Create or edit a Medecin Patient",
+        "notFound": "No Medecin Patients found"
+      },
+      "created": "A new Medecin Patient is created with identifier {{ param }}",
+      "updated": "A Medecin Patient is updated with identifier {{ param }}",
+      "deleted": "A Medecin Patient is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Medecin Patient {{ id }}?"
+      },
+      "detail": {
+        "title": "Medecin Patient"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "medecins": "Medecins",
+      "patients": "Patients"
+    }
+  }
+}

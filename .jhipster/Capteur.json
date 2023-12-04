@@ -1,0 +1,43 @@
+{
+  "name": "Capteur",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resolution",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeurMin",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "valeurMax",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "boitierCapteur",
+      "otherEntityRelationshipName": "capteurs",
+      "relationshipName": "boitierCapteurs"
+    }
+  ],
+  "entityTableName": "capteur",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231204195221"
+}

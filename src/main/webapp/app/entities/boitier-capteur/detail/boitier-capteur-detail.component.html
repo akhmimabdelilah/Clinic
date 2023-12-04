@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="boitierCapteur">
+      <h2 data-cy="boitierCapteurDetailsHeading"><span jhiTranslate="cliniqueApp.boitierCapteur.detail.title">Boitier Capteur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ boitierCapteur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierCapteur.branche">Branche</span></dt>
+        <dd>
+          <span>{{ boitierCapteur.branche }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierCapteur.etat">Etat</span></dt>
+        <dd>
+          <span>{{ boitierCapteur.etat }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierCapteur.boitiers">Boitiers</span></dt>
+        <dd>
+          <div *ngIf="boitierCapteur.boitiers">
+            <a [routerLink]="['/boitier', boitierCapteur.boitiers?.id, 'view']">{{ boitierCapteur.boitiers?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierCapteur.capteurs">Capteurs</span></dt>
+        <dd>
+          <div *ngIf="boitierCapteur.capteurs">
+            <a [routerLink]="['/capteur', boitierCapteur.capteurs?.id, 'view']">{{ boitierCapteur.capteurs?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/boitier-capteur', boitierCapteur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

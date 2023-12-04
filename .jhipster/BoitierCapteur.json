@@ -1,0 +1,37 @@
+{
+  "name": "BoitierCapteur",
+  "fields": [
+    {
+      "fieldName": "branche",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "boitier",
+      "otherEntityRelationshipName": "boitierCapteurs",
+      "relationshipName": "boitiers"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "capteur",
+      "otherEntityRelationshipName": "boitierCapteurs",
+      "relationshipName": "capteurs"
+    }
+  ],
+  "entityTableName": "boitier_capteur",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231204195227"
+}

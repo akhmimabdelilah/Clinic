@@ -48,6 +48,24 @@ public class CacheConfiguration {
             createCache(cm, com.clinique.domain.User.class.getName());
             createCache(cm, com.clinique.domain.Authority.class.getName());
             createCache(cm, com.clinique.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.clinique.domain.Medecin.class.getName());
+            createCache(cm, com.clinique.domain.Medecin.class.getName() + ".medecinPatients");
+            createCache(cm, com.clinique.domain.Patient.class.getName());
+            createCache(cm, com.clinique.domain.Patient.class.getName() + ".mesures");
+            createCache(cm, com.clinique.domain.Patient.class.getName() + ".videos");
+            createCache(cm, com.clinique.domain.Patient.class.getName() + ".medecinPatients");
+            createCache(cm, com.clinique.domain.Patient.class.getName() + ".boitierPatients");
+            createCache(cm, com.clinique.domain.Boitier.class.getName());
+            createCache(cm, com.clinique.domain.Boitier.class.getName() + ".boitierCapteurs");
+            createCache(cm, com.clinique.domain.Boitier.class.getName() + ".boitierPatients");
+            createCache(cm, com.clinique.domain.Capteur.class.getName());
+            createCache(cm, com.clinique.domain.Capteur.class.getName() + ".boitierCapteurs");
+            createCache(cm, com.clinique.domain.Mesure.class.getName());
+            createCache(cm, com.clinique.domain.Video.class.getName());
+            createCache(cm, com.clinique.domain.ExtraUser.class.getName());
+            createCache(cm, com.clinique.domain.MedecinPatient.class.getName());
+            createCache(cm, com.clinique.domain.BoitierPatient.class.getName());
+            createCache(cm, com.clinique.domain.BoitierCapteur.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

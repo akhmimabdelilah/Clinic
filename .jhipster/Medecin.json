@@ -1,0 +1,34 @@
+{
+  "name": "Medecin",
+  "fields": [
+    {
+      "fieldName": "specialite",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "extraUser",
+      "otherEntityRelationshipName": "medecin",
+      "relationshipName": "extraUserId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "medecinPatient",
+      "otherEntityRelationshipName": "medecins",
+      "relationshipName": "medecinPatients"
+    }
+  ],
+  "entityTableName": "medecin",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231204195218"
+}

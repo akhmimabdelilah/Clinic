@@ -7,6 +7,16 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "medecin": "Medecin",
+        "patient": "Patient",
+        "boitier": "Boitier",
+        "capteur": "Capteur",
+        "mesure": "Mesure",
+        "video": "Video",
+        "extraUser": "Extra User",
+        "medecinPatient": "Medecin Patient",
+        "boitierPatient": "Boitier Patient",
+        "boitierCapteur": "Boitier Capteur",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

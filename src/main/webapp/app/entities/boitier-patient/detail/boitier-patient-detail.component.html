@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="boitierPatient">
+      <h2 data-cy="boitierPatientDetailsHeading"><span jhiTranslate="cliniqueApp.boitierPatient.detail.title">Boitier Patient</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ boitierPatient.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierPatient.dateDebut">Date Debut</span></dt>
+        <dd>
+          <span>{{ boitierPatient.dateDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierPatient.dateFin">Date Fin</span></dt>
+        <dd>
+          <span>{{ boitierPatient.dateFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierPatient.boitiers">Boitiers</span></dt>
+        <dd>
+          <div *ngIf="boitierPatient.boitiers">
+            <a [routerLink]="['/boitier', boitierPatient.boitiers?.id, 'view']">{{ boitierPatient.boitiers?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.boitierPatient.patients">Patients</span></dt>
+        <dd>
+          <div *ngIf="boitierPatient.patients">
+            <a [routerLink]="['/patient', boitierPatient.patients?.id, 'view']">{{ boitierPatient.patients?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/boitier-patient', boitierPatient.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

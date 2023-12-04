@@ -41,6 +41,19 @@
     "packageFolder": "com/clinique",
     "jwtSecretKey": "MjBlN2RjNjRhY2QxOTk0Mjg1ZTI2YmYyMmI4MmFjMzcyMzQwYWNkOTc3YjVhMWM5Y2JhN2ZkMzM5MDdjZjVhMDUwZTUxNTQwZmQwYjk5MzczNTkxOWJkZWJjZjFjMDA1NTYwM2YyNjgzNDlkNTI3YjZiZjg1NTRhYTdhMmZhZmQ=",
     "clientPackageManager": "npm",
-    "languages": ["en", "ar-ly"]
+    "languages": ["en", "ar-ly"],
+    "entities": [
+      "Medecin",
+      "Patient",
+      "Boitier",
+      "Capteur",
+      "Mesure",
+      "Video",
+      "ExtraUser",
+      "MedecinPatient",
+      "BoitierPatient",
+      "BoitierCapteur"
+    ],
+    "lastLiquibaseTimestamp": 1701719547000
   }
 }

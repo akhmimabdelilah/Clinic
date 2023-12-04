@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Medecin.
+    -->
+    <changeSet id="20231204195218-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="extra_user_id_id"
+                                 baseTableName="medecin"
+                                 constraintName="fk_medecin__extra_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="extra_user"/>
+    </changeSet>
+</databaseChangeLog>

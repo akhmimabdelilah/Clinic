@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="BoitierCapteurHeading">
+    <span jhiTranslate="cliniqueApp.boitierCapteur.home.title">Boitier Capteurs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="cliniqueApp.boitierCapteur.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-boitier-capteur"
+        [routerLink]="['/boitier-capteur/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="cliniqueApp.boitierCapteur.home.createLabel"> Create a new Boitier Capteur </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="boitierCapteurs?.length === 0">
+    <span jhiTranslate="cliniqueApp.boitierCapteur.home.notFound">No boitierCapteurs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="boitierCapteurs && boitierCapteurs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierCapteur.branche">Branche</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierCapteur.etat">Etat</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierCapteur.boitiers">Boitiers</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierCapteur.capteurs">Capteurs</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let boitierCapteur of boitierCapteurs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/boitier-capteur', boitierCapteur.id, 'view']">{{ boitierCapteur.id }}</a>
+          </td>
+          <td>{{ boitierCapteur.branche }}</td>
+          <td>{{ boitierCapteur.etat }}</td>
+          <td>
+            <div *ngIf="boitierCapteur.boitiers">
+              <a [routerLink]="['/boitier', boitierCapteur.boitiers?.id, 'view']">{{ boitierCapteur.boitiers?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="boitierCapteur.capteurs">
+              <a [routerLink]="['/capteur', boitierCapteur.capteurs?.id, 'view']">{{ boitierCapteur.capteurs?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/boitier-capteur', boitierCapteur.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/boitier-capteur', boitierCapteur.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(boitierCapteur)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patient">
+      <h2 data-cy="patientDetailsHeading"><span jhiTranslate="cliniqueApp.patient.detail.title">Patient</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patient.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.patient.profession">Profession</span></dt>
+        <dd>
+          <span>{{ patient.profession }}</span>
+        </dd>
+        <dt><span jhiTranslate="cliniqueApp.patient.extraUserId">Extra User Id</span></dt>
+        <dd>
+          <div *ngIf="patient.extraUserId">
+            <a [routerLink]="['/extra-user', patient.extraUserId?.id, 'view']">{{ patient.extraUserId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patient', patient.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

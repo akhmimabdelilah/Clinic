@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-boitier-capteur-heading"
+        data-cy="BoitierCapteurCreateUpdateHeading"
+        jhiTranslate="cliniqueApp.boitierCapteur.home.createOrEditLabel"
+      >
+        Create or edit a Boitier Capteur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierCapteur.branche" for="field_branche">Branche</label>
+          <input type="text" class="form-control" name="branche" id="field_branche" data-cy="branche" formControlName="branche" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierCapteur.etat" for="field_etat">Etat</label>
+          <input type="checkbox" class="form-check" name="etat" id="field_etat" data-cy="etat" formControlName="etat" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierCapteur.boitiers" for="field_boitiers">Boitiers</label>
+          <select class="form-control" id="field_boitiers" data-cy="boitiers" name="boitiers" formControlName="boitiers">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="boitierOption.id === editForm.get('boitiers')!.value?.id ? editForm.get('boitiers')!.value : boitierOption"
+              *ngFor="let boitierOption of boitiersSharedCollection; trackBy: trackBoitierById"
+            >
+              {{ boitierOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierCapteur.capteurs" for="field_capteurs">Capteurs</label>
+          <select class="form-control" id="field_capteurs" data-cy="capteurs" name="capteurs" formControlName="capteurs">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="capteurOption.id === editForm.get('capteurs')!.value?.id ? editForm.get('capteurs')!.value : capteurOption"
+              *ngFor="let capteurOption of capteursSharedCollection; trackBy: trackCapteurById"
+            >
+              {{ capteurOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

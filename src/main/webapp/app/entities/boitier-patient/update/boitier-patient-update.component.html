@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-boitier-patient-heading"
+        data-cy="BoitierPatientCreateUpdateHeading"
+        jhiTranslate="cliniqueApp.boitierPatient.home.createOrEditLabel"
+      >
+        Create or edit a Boitier Patient
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierPatient.dateDebut" for="field_dateDebut">Date Debut</label>
+          <div class="input-group">
+            <input
+              id="field_dateDebut"
+              data-cy="dateDebut"
+              type="text"
+              class="form-control"
+              name="dateDebut"
+              ngbDatepicker
+              #dateDebutDp="ngbDatepicker"
+              formControlName="dateDebut"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDebutDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierPatient.dateFin" for="field_dateFin">Date Fin</label>
+          <div class="input-group">
+            <input
+              id="field_dateFin"
+              data-cy="dateFin"
+              type="text"
+              class="form-control"
+              name="dateFin"
+              ngbDatepicker
+              #dateFinDp="ngbDatepicker"
+              formControlName="dateFin"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateFinDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierPatient.boitiers" for="field_boitiers">Boitiers</label>
+          <select class="form-control" id="field_boitiers" data-cy="boitiers" name="boitiers" formControlName="boitiers">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="boitierOption.id === editForm.get('boitiers')!.value?.id ? editForm.get('boitiers')!.value : boitierOption"
+              *ngFor="let boitierOption of boitiersSharedCollection; trackBy: trackBoitierById"
+            >
+              {{ boitierOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="cliniqueApp.boitierPatient.patients" for="field_patients">Patients</label>
+          <select class="form-control" id="field_patients" data-cy="patients" name="patients" formControlName="patients">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="patientOption.id === editForm.get('patients')!.value?.id ? editForm.get('patients')!.value : patientOption"
+              *ngFor="let patientOption of patientsSharedCollection; trackBy: trackPatientById"
+            >
+              {{ patientOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+entity User {
+}
+
+entity Medecin {
+  specialite String
+}
+
+entity Patient {
+  profession String
+}
+
+entity Boitier {
+  type String
+  ref String
+  nbrBranche Integer
+}
+
+entity Capteur {
+  type String
+  reference String
+  resolution String
+  valeurMin Double
+  valeurMax Double
+}
+
+entity Mesure {
+  type String
+  valeur Double
+  date LocalDate
+}
+
+entity Video {
+  nom String
+  url String
+  date LocalDate
+  duree Integer
+}
+
+entity ExtraUser {
+  cin String
+  numeroTelephone Double
+  dateNaissance LocalDate
+  nationalite String
+  adresse String
+  genre String
+}
+
+entity MedecinPatient {
+  dateDebut LocalDate
+  dateFin LocalDate
+}
+
+entity BoitierPatient {
+  dateDebut LocalDate
+  dateFin LocalDate
+}
+
+entity BoitierCapteur {
+  branche String
+  etat Boolean
+}
+
+relationship ManyToOne {
+  Video{patients} to Patient{videos}
+}
+
+
+relationship OneToOne {
+  Patient{ExtraUserId} to ExtraUser
+  Medecin{ExtraUserId} to ExtraUser
+  ExtraUser{user} to User{User}  
+}
+relationship OneToMany {
+  Patient to Mesure
+}
+
+relationship ManyToOne {
+  MedecinPatient{medecins} to Medecin{medecinPatients}
+  MedecinPatient{patients} to Patient{medecinPatients}
+}
+
+relationship ManyToOne {
+  BoitierCapteur{boitiers} to Boitier{boitierCapteurs}
+  BoitierCapteur{capteurs} to Capteur{boitierCapteurs}
+}
+
+relationship ManyToOne {
+  BoitierPatient{boitiers} to Boitier{boitierPatients}
+  BoitierPatient{patients} to Patient{boitierPatients}
+}

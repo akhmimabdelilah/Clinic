@@ -1,0 +1,27 @@
+{
+  "cliniqueApp": {
+    "boitierPatient": {
+      "home": {
+        "title": "Boitier Patients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Boitier Patient",
+        "createOrEditLabel": "Create or edit a Boitier Patient",
+        "notFound": "No Boitier Patients found"
+      },
+      "created": "A new Boitier Patient is created with identifier {{ param }}",
+      "updated": "A Boitier Patient is updated with identifier {{ param }}",
+      "deleted": "A Boitier Patient is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Boitier Patient {{ id }}?"
+      },
+      "detail": {
+        "title": "Boitier Patient"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "boitiers": "Boitiers",
+      "patients": "Patients"
+    }
+  }
+}

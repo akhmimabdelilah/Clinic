@@ -1,0 +1,41 @@
+{
+  "name": "Boitier",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nbrBranche",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "boitierCapteur",
+      "otherEntityRelationshipName": "boitiers",
+      "relationshipName": "boitierCapteurs"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "boitierPatient",
+      "otherEntityRelationshipName": "boitiers",
+      "relationshipName": "boitierPatients"
+    }
+  ],
+  "entityTableName": "boitier",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231204195220"
+}

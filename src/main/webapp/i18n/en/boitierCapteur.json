@@ -1,0 +1,27 @@
+{
+  "cliniqueApp": {
+    "boitierCapteur": {
+      "home": {
+        "title": "Boitier Capteurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Boitier Capteur",
+        "createOrEditLabel": "Create or edit a Boitier Capteur",
+        "notFound": "No Boitier Capteurs found"
+      },
+      "created": "A new Boitier Capteur is created with identifier {{ param }}",
+      "updated": "A Boitier Capteur is updated with identifier {{ param }}",
+      "deleted": "A Boitier Capteur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Boitier Capteur {{ id }}?"
+      },
+      "detail": {
+        "title": "Boitier Capteur"
+      },
+      "id": "ID",
+      "branche": "Branche",
+      "etat": "Etat",
+      "boitiers": "Boitiers",
+      "capteurs": "Capteurs"
+    }
+  }
+}

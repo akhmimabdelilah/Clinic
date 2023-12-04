@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="BoitierPatientHeading">
+    <span jhiTranslate="cliniqueApp.boitierPatient.home.title">Boitier Patients</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="cliniqueApp.boitierPatient.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-boitier-patient"
+        [routerLink]="['/boitier-patient/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="cliniqueApp.boitierPatient.home.createLabel"> Create a new Boitier Patient </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="boitierPatients?.length === 0">
+    <span jhiTranslate="cliniqueApp.boitierPatient.home.notFound">No boitierPatients found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="boitierPatients && boitierPatients.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierPatient.dateDebut">Date Debut</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierPatient.dateFin">Date Fin</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierPatient.boitiers">Boitiers</span></th>
+          <th scope="col"><span jhiTranslate="cliniqueApp.boitierPatient.patients">Patients</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let boitierPatient of boitierPatients; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/boitier-patient', boitierPatient.id, 'view']">{{ boitierPatient.id }}</a>
+          </td>
+          <td>{{ boitierPatient.dateDebut | formatMediumDate }}</td>
+          <td>{{ boitierPatient.dateFin | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="boitierPatient.boitiers">
+              <a [routerLink]="['/boitier', boitierPatient.boitiers?.id, 'view']">{{ boitierPatient.boitiers?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="boitierPatient.patients">
+              <a [routerLink]="['/patient', boitierPatient.patients?.id, 'view']">{{ boitierPatient.patients?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/boitier-patient', boitierPatient.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/boitier-patient', boitierPatient.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(boitierPatient)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
